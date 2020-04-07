@@ -10,11 +10,37 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    let imageView = UIImageView()
+    
+    var isVisible: Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        
+        imageView.image = UIImage(named: "sample")
+        
+        imageView.contentMode = .scaleToFill
+        
     }
 
-
+    @IBAction func addImageView(_ sender: UITapGestureRecognizer) {
+        
+        if isVisible {
+            
+            imageView.removeFromSuperview()
+            
+        } else {
+            
+            imageView.center = sender.location(in: self.view)
+            
+            self.view.addSubview(imageView)
+            
+        }
+    }
+    
 }
 
